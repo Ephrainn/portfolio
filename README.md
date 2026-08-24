@@ -43,6 +43,9 @@ See `PHPMailer_Setup_Guide.md` for more details.
 ## Security & privacy
 - If the CV contains personal or sensitive data, confirm visibility settings for the deployed site and repository.
 - Remove any credentials from the repo history if they were accidentally committed (consider using GitHub secret scanning and rotate credentials).
+- SMTP credentials are read from the `GMAIL_USER` / `GMAIL_PASS` environment variables (set them in Vercel Dashboard → Settings → Environment Variables). Never hardcode them in `api/send_email.php`.
+- Security headers (CSP, HSTS, X-Frame-Options, X-Content-Type-Options, Referrer-Policy, Permissions-Policy) are configured in `vercel.json`.
+- `.vercelignore` keeps local-only files (docs, root `send_email.php`) out of deployments, so they are never served as static files.
 
 ## Suggested next steps
 - Option A (recommended): Keep the CV at the repository root (current state) OR move it to `assets/`/`public/` to centralize static assets.

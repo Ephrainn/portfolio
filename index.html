@@ -6,22 +6,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ephraim Aseda Quarshie | Front-end Developer</title>
   <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
-    rel="stylesheet">
-  <!-- Tailwind CDN (for bento grid component) -->
-  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Fonts are self-hosted (no third-party font CDN) -->
+  <link rel="stylesheet" href="assets/fonts.css">
+  <!-- Font Awesome, pinned version + Subresource Integrity -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    integrity="sha384-t1nt8BQoYMLFN5p42tRAtuAAFQaCQODekUVeKKZrEnEyp4H2R0RHFz0KWpmj7i8g" crossorigin="anonymous"
+    referrerpolicy="no-referrer">
+  <!-- Tailwind Play CDN v3.4.16, self-hosted copy (the vendor CDN sends no CORS headers, so SRI cannot be used) -->
+  <script src="tailwind.play.js"></script>
   <script>
     tailwind.config = {
       corePlugins: { preflight: false },
       important: '#bento-root'
     }
   </script>
-  <!-- React + Babel CDN -->
-  <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <!-- React + Babel, pinned versions self-hosted in /vendor (no third-party script hosts) -->
+  <script src="vendor/react.production.min.js"></script>
+  <script src="vendor/react-dom.production.min.js"></script>
+  <script src="vendor/babel.min.js"></script>
 </head>
 
 <body>
@@ -318,7 +320,6 @@
     </div>
   </footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
   <script src="script.js"></script>
 
   <!-- Bento Grid + Case Study React Components -->
@@ -354,10 +355,10 @@
     );
 
     const projects = [
-      { id: 1, title: "GTVote", category: "VOTING SYSTEM", description: "Secure online voting platform for student elections and corporate governance.", tags: ["HTML", "CSS", "JS"], image: "https://images.unsplash.com/photo-1494172961521-33799ddd43a5?auto=format&fit=crop&q=80&w=800", link: "https://gtvote.xo.je/" },
-      { id: 2, title: "UniStay", category: "ACCOMMODATION", description: "Verified university housing platform near campuses.", tags: ["HTML", "CSS"], image: "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&q=80&w=600", link: "https://unistay.gt.tc/" },
-      { id: 3, title: "Element 9", category: "E-COMMERCE", description: "Premium sneaker store in Ghana with online booking.", tags: ["React", "Vercel"], image: "https://images.unsplash.com/photo-1552346154-21d32810aba3?auto=format&fit=crop&q=80&w=600", link: "https://element9.vercel.app/" },
-      { id: 4, title: "VoicePawa", category: "MUSIC DISTRO", description: "Digital music distribution to 35+ countries worldwide.", tags: ["React", "JS"], image: "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&q=80&w=600", link: "https://voicepawa.vercel.app/" }
+      { id: 1, title: "GTVote", category: "VOTING SYSTEM", description: "Secure online voting platform for student elections and corporate governance.", tags: ["HTML", "CSS", "JS"], image: "assets/img/gtvote.jpg", link: "https://gtvote.xo.je/" },
+      { id: 2, title: "UniStay", category: "ACCOMMODATION", description: "Verified university housing platform near campuses.", tags: ["HTML", "CSS"], image: "assets/img/unistay.jpg", link: "https://unistay.gt.tc/" },
+      { id: 3, title: "Element 9", category: "E-COMMERCE", description: "Premium sneaker store in Ghana with online booking.", tags: ["React", "Vercel"], image: "assets/img/element9.jpg", link: "https://element9.vercel.app/" },
+      { id: 4, title: "VoicePawa", category: "MUSIC DISTRO", description: "Digital music distribution to 35+ countries worldwide.", tags: ["React", "JS"], image: "assets/img/voicepawa.jpg", link: "https://voicepawa.vercel.app/" }
     ];
 
     const Tag = ({ label }) => (
@@ -500,7 +501,7 @@
           <div className="cs-hero-card">
             <div className="cs-hero-left">
               <img
-                src="https://images.unsplash.com/photo-1494172961521-33799ddd43a5?auto=format&fit=crop&q=80&w=900"
+                src="assets/img/gtvote.jpg"
                 alt="GTVote"
                 className="cs-hero-img"
               />

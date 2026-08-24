@@ -7,10 +7,30 @@ ini_set('log_errors', 1);
 // Start output buffering to catch any unexpected output
 ob_start();
 
-header('Content-Type: application/json');
-header('Access-Control-Allow-Origin: *');
-header('Access-Control-Allow-Methods: POST');
-header('Access-Control-Allow-Headers: Content-Type');
+// Do not leak server details in responses (e.g. "X-Powered-By: PHP/8.x.x")
+header_remove('X-Powered-By');
+
+header('Content-Type: application/json; charset=utf-8');
+header('X-Content-Type-Options: nosniff');
+header('X-Frame-Options: SAMEORIGIN');
+header('Referrer-Policy: no-referrer');
+// API responses must never be cached
+header('Cache-Control: no-store, no-cache, must-revalidate, max-age=0');
+header('Pragma: no-cache');
+
+// CORS: only local development origins (this file is not deployed to production)
+$allowedOrigins = [
+    'http://localhost',
+    'http://localhost:3000',
+    'http://localhost:8000',
+];
+$origin = isset($_SERVER['HTTP_ORIGIN']) ? $_SERVER['HTTP_ORIGIN'] : '';
+if (in_array($origin, $allowedOrigins, true)) {
+    header('Access-Control-Allow-Origin: ' . $origin);
+    header('Vary: Origin');
+    header('Access-Control-Allow-Methods: POST');
+    header('Access-Control-Allow-Headers: Content-Type');
+}
 
 // Only allow POST requests
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
@@ -139,7 +159,7 @@ if (!$usePHPMailer) {
     // Email headers
     $headers = "From: " . $name . " <" . $email . ">\r\n";
     $headers .= "Reply-To: " . $email . "\r\n";
-    $headers .= "X-Mailer: PHP/" . phpversion() . "\r\n";
+    $headers .= "X-Mailer: ContactForm\r\n";
     $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
 
     // Send email
