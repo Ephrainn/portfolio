@@ -355,11 +355,11 @@
     );
 
     const projects = [
-      { id: 1, title: "GTVote", category: "VOTING SYSTEM", description: "Secure online voting platform for student elections and corporate governance.", tags: ["HTML", "CSS", "JS"], image: "assets/img/gtvote.jpg", link: "https://gtvote.xo.je/" },
+      { id: 1, title: "GTVote", category: "VOTING SYSTEM", description: "Secure online voting platform for student elections and corporate governance.", tags: ["HTML", "CSS", "JS"], image: "assets/img/gtvote.jpg", link: "http://gtvot3.alwaysdata.net/" },
       { id: 2, title: "UniStay", category: "ACCOMMODATION", description: "Verified university housing platform near campuses.", tags: ["HTML", "CSS"], image: "assets/img/unistay.jpg", link: "https://unistay.gt.tc/" },
       { id: 3, title: "Element 9", category: "E-COMMERCE", description: "Premium sneaker store in Ghana with online booking.", tags: ["React", "Vercel"], image: "assets/img/element9.jpg", link: "https://element9.vercel.app/" },
       { id: 4, title: "VoicePawa", category: "MUSIC DISTRO", description: "Digital music distribution to 35+ countries worldwide.", tags: ["React", "JS"], image: "assets/img/voicepawa.jpg", link: "https://voicepawa.vercel.app/" },
-      { id: 5, title: "Lebanon Mountain", category: "RESTAURANT", description: "Restaurant website showcasing Lebanese mountain cuisine and dining experience.", tags: ["Web", "Vercel"], image: "", link: "https://lebanon-mountain-restaurant.vercel.app/" }
+      { id: 5, title: "Lebanon Mountain", category: "RESTAURANT", description: "Restaurant website showcasing Lebanese mountain cuisine and dining experience.", tags: ["Web", "Vercel"], image: "assets/img/lebanon-mountain.jpg", link: "https://lebanon-mountain-restaurant.vercel.app/" }
     ];
 
     const Tag = ({ label }) => (
@@ -447,17 +447,18 @@
             </div>
           </a>
 
-          {/* Lebanon Mountain */}
-          <a href={projects[4].link} target="_blank" rel="noreferrer" className="bp-mini group">
-            <div className="absolute inset-0 w-full h-full object-cover opacity-30 group-hover:opacity-60 transition-opacity duration-500" style={{ background: 'linear-gradient(135deg, #065f46 0%, #047857 50%, #10b981 100%)' }} />
-            <div className="absolute inset-0" style={{ background: 'linear-gradient(to top,rgba(2,6,23,0.92) 0%,transparent 100%)' }} />
-            <div className="absolute inset-0 p-4 flex flex-col justify-end">
-              <p className="text-[8px] font-black uppercase tracking-widest text-emerald-400 mb-0.5">{projects[4].category}</p>
-              <h3 className="font-black text-sm tracking-tight text-white leading-tight">{projects[4].title}</h3>
-              <p className="text-[10px] text-slate-400 mt-1 leading-snug line-clamp-2">{projects[4].description}</p>
+          {/* Lebanon Mountain — featured hero */}
+          <a href={projects[4].link} target="_blank" rel="noreferrer" className="bp-hero group">
+            <img src={projects[4].image} className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt={projects[4].title} />
+            <div className="absolute inset-0" style={{ background: 'linear-gradient(to top,rgba(2,6,23,0.92) 0%,rgba(2,6,23,0.55) 55%,rgba(2,6,23,0.15) 100%)' }} />
+            <div className="absolute inset-0 p-6 flex flex-col justify-end">
+              <div className="flex flex-wrap gap-1.5 mb-2">{projects[4].tags.map(t => <Tag key={t} label={t} />)}</div>
+              <p className="text-[9px] font-black uppercase tracking-[0.2em] text-emerald-400 mb-1">{projects[4].category}</p>
+              <h3 className="text-3xl font-black tracking-tighter text-white leading-none mb-1.5">{projects[4].title}</h3>
+              <p className="text-xs text-slate-400 leading-relaxed max-w-sm">{projects[4].description}</p>
             </div>
-            <div className="absolute top-3 right-3 w-7 h-7 rounded-full bg-white/10 border border-white/20 flex items-center justify-center transition-all group-hover:bg-emerald-500 group-hover:border-emerald-500">
-              <ExternalLink size={11} className="text-white" />
+            <div className="absolute top-5 right-5 w-11 h-11 rounded-full bg-white text-black flex items-center justify-center shadow-xl transition-all duration-300 group-hover:bg-emerald-500 group-hover:text-white group-hover:scale-110">
+              <ExternalLink size={17} />
             </div>
           </a>
 

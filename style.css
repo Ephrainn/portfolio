@@ -1562,56 +1562,6 @@ footer p {
     }
 }
 
-font-size: 0.9rem;
-}
-
-.section-tag {
-    padding: 0.4rem 1rem;
-    font-size: 0.75rem;
-    letter-spacing: 1px;
-}
-
-.about-text p {
-    font-size: 1rem;
-}
-
-.about-intro {
-    font-size: 1.1rem !important;
-}
-
-.about-stats {
-    gap: 0.75rem;
-}
-
-.stat-number {
-    font-size: 1.5rem;
-}
-
-.stat-suffix {
-    font-size: 0.85rem;
-}
-
-.stat-label {
-    font-size: 0.7rem;
-}
-
-.contact-wrapper {
-    gap: 2rem;
-}
-
-.contact-intro {
-    font-size: 1rem;
-}
-
-.contact-details {
-    gap: 1rem;
-}
-
-.contact-item {
-    gap: 0.75rem;
-}
-}
-
 /* =====================
    BENTO GRID
    ===================== */
