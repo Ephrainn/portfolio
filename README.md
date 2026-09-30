@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Portfolio — Ephraim Aseda Quarshie
 
 A personal portfolio website built with HTML, CSS and JavaScript, plus a small PHP backend for email (PHPMailer). Live demo: https://myportfolio-eaq.vercel.app/
@@ -57,3 +58,6 @@ If you'd like me to proceed with either action, tell me and I will create the co
 
 ## License
 Add your desired license here (e.g., MIT).
+=======
+# portfolio
+>>>>>>> 17f13f985c1731ecd1f626144e1a83262bec135c
