@@ -182,11 +182,25 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
   io.observe(contact);
 })();
 
-/* ── Contact form ─────────────────────────────────────────── */
+/* ── Contact form (EmailJS) ───────────────────────────────── */
 (function initContactForm() {
   const form   = document.getElementById('contactForm');
   const submit = document.getElementById('contactSubmit');
   if (!form) return;
+
+  /*
+   * Replace the three placeholders below with your EmailJS credentials:
+   *   SERVICE_ID  — from EmailJS dashboard → Email Services
+   *   TEMPLATE_ID — from EmailJS dashboard → Email Templates
+   *   PUBLIC_KEY  — from EmailJS dashboard → Account → Public Key
+   *
+   * Template variables used: {{from_name}}, {{from_email}}, {{message}}
+   */
+  const EMAILJS_SERVICE_ID  = 'YOUR_SERVICE_ID';
+  const EMAILJS_TEMPLATE_ID = 'YOUR_TEMPLATE_ID';
+  const EMAILJS_PUBLIC_KEY  = 'YOUR_PUBLIC_KEY';
+
+  emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
 
   form.addEventListener('submit', async e => {
     e.preventDefault();
@@ -209,32 +223,21 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
     submit.disabled = true;
     submit.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending…';
 
-    /* POST to send_email.php via FormData (matches $_POST in PHP) */
-    const formData = new FormData();
-    formData.append('name', name);
-    formData.append('email', email);
-    formData.append('message', message);
-
     try {
-      const res  = await fetch('/api/send_email.php', {
-        method: 'POST',
-        body: formData
+      await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+        from_name:  name,
+        from_email: email,
+        message:    message,
       });
-      const data = await res.json();
 
-      if (data.success) {
-        submit.innerHTML = '<i class="fas fa-check"></i> Message Sent!';
-        submit.style.background  = 'var(--green)';
-        submit.style.borderColor = 'var(--green)';
-        form.reset();
-      } else {
-        submit.innerHTML = '<i class="fas fa-exclamation-triangle"></i> ' + (data.message || 'Error — try again.');
-        submit.style.background  = '#cf222e';
-        submit.style.borderColor = '#cf222e';
-      }
+      submit.innerHTML = '<i class="fas fa-check"></i> Message Sent!';
+      submit.style.background  = 'var(--green)';
+      submit.style.borderColor = 'var(--green)';
+      form.reset();
 
     } catch (err) {
-      submit.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Could not connect.';
+      console.error('EmailJS error:', err);
+      submit.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Could not send — try again.';
       submit.style.background  = '#cf222e';
       submit.style.borderColor = '#cf222e';
     }

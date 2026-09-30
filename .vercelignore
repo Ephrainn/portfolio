@@ -1,7 +1,12 @@
-# Local-only files that must never be published with the website.
-# On Vercel only api/*.php is executed as PHP; a root-level send_email.php
-# would be served as plain text, disclosing its source code.
-send_email.php
+# PHP files — not used on Vercel (contact form uses EmailJS)
+*.php
+api/
+PHPMailer-7.0.1/
+vendor/
+
+# Docs
 *.md
-.snapshots
+
+# Editor / local tooling
 .vscode
+.snapshots
